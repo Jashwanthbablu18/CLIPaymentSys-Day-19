@@ -1,0 +1,34 @@
+This is a  program  which was designed as part of my "30-Day Python Challenge." 
+
+- UserWallet Class:
+  - Represents a user's wallet with a name and a balance.
+  - The balance is encapsulated to prevent direct modification from outside the class.
+  - Methods include:
+    - get_balance(): Returns the current balance.
+    - deduct(amount): Deducts a specified amount from the balance if sufficient funds are available, returning True if successful or False otherwise.
+    - show_balance(): Displays the current balance in a formatted string.
+
+- PaymentMethod Class:
+  - This is an abstract base class that defines a method pay(), which raises a NotImplementedError. It is used to override by another classes.
+
+- UPIPayment and CardPayment Classes:
+  - Both inherit from PaymentMethod and implement the pay() method.
+  - Each method attempts to deduct the specified amount from the wallet using the deduct() method and displays whether the payment was 
+    successful or failed due to insufficient funds.
+
+- main() Function:  
+  - Creates an instance of UserWallet for a user named "Jayesh" with an initial balance of ₹2000.
+  - Displays the initial balance.
+  - Demonstrates polymorphic behavior by creating instances of UPIPayment and CardPayment.
+  - Performs transactions using both payment methods:
+    - A UPI transaction of ₹500, which will succeed.
+    - A Card transaction of ₹1800, which will fail due to insufficient funds after the UPI transaction.
+    - A retry Card transaction of ₹1300, which will succeed.
+
+What I've learnt:
+- Encapsulation: This is the practice of hiding the internal state of an object and requiring all interaction to be performed through an object's 
+   methods. In this code, the __balance attribute of the UserWallet class is encapsulated (made private) by prefixing it with double 
+   underscores (__). This means it cannot be accessed directly from outside the class.
+- Polymorphism: Polymorphism allows different classes to be treated as instances of the same class through a common interface. 
+  It enables the use of a single function name or method for different types of objects.. In this code, PaymentMethod is a base class 
+  with a method pay() that is intended to be overridden by its subclasses. UPIPayment and CardPayment are subclasses that implement their own version of the pay() method.
